@@ -1,0 +1,59 @@
+package cis232.lab3;
+
+import weiss.util.Random;
+
+public class L3EKidRegOct extends Shape {
+    //instance variable
+    private double sideLength;
+
+    //constructors
+    public L3EKidRegOct(double side) {
+        sideLength = side;
+    }
+
+    public L3EKidRegOct() {
+        sideLength = 10;
+    }
+
+    //implemented abstract methods from Shape
+    public double area() {
+        return 2 * (1 + Math.sqrt(2.0)) * Math.pow(sideLength, 2);
+    }
+
+    public double perimeter() {
+        return 8 * sideLength;
+    }
+
+    //toString method
+    public String toString() {
+        return "Length of octagon sides: " + getSideLength() + ", Area: " + area();
+    }
+
+    //accessor
+    public double getSideLength() {
+        return sideLength;
+    }
+
+    //mutator
+    public void setSideLength(double s) {
+        sideLength = s;
+    }
+
+    //sort method
+    public static void lab3Sort(L3EKidRegOct[] octa) {
+        for (int i = 0; i < octa.length; i++) {
+
+
+            int min = i;
+
+            for (int j = i + 1; j < octa.length; j++) {
+                if (octa[j].compareTo(octa[min]) < 0) {
+                    min = j;
+                }
+            }
+            L3EKidRegOct sort = octa[i];
+            octa[i] = octa[min];
+            octa[min] = sort;
+        }
+    }
+}
